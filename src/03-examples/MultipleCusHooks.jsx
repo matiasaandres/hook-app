@@ -1,17 +1,15 @@
-import React from "react";
-import { useCounter } from "../hooks/useCounter";
-import { useFetch } from "../hooks/useFetch";
+import { useCounter,useFetch } from "../hooks";
+import { LoadingQuote, Quote} from "./";
+
+
 
 export const MultipleCusHooks = () => {
 
-    const {counter, increment} = useCounter();
+    const {counter, increment} = useCounter(1);
 
-    const url = "https://api.breakingbadquotes.xyz/v1/quotes/"+counter;
-
-    console.log(url);
-
-
-  const { data, isLoading, hasError } = useFetch(url);
+    const url = `https://api.breakingbadquotes.xyz/v1/quotes/${counter}`;
+  
+    const { data, isLoading, hasError } = useFetch(url);
 
 
 
@@ -23,16 +21,10 @@ export const MultipleCusHooks = () => {
       <h1>BreakingBad Qoutes</h1>
       <hr />
 
-      {isLoading ? (
-        <div className="text-center alert alert-info">Loading</div>
-      ) : (
-        <blockquote className="blockquote text-end">
-          <p className="mb-1"> {quote}</p>
-          <footer className="blockquote-footer">{author}</footer>
-        </blockquote>
-      )}
+      {isLoading ? <LoadingQuote/>
+       : <Quote quote={quote} author={author}/>}
 
-      <button className="btn btn-primary" onClick={()=>increment(1)}> Next Quote</button>
+      <button className="btn btn-primary" disabled={isLoading} onClick={()=>increment(1)}> Next Quote</button>
     </>
   );
 };
