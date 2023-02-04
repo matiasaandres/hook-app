@@ -1,43 +1,17 @@
 import React, { useEffect } from "react";
-import { useState } from "react";
+import { useForm } from "../hooks/useForm";
 
 export const FormWithCustomHook = () => {
-  const [formState, setformState] = useState({
-    username: "strider2",
-    email: "matias@google.com",
-    pass: "matias123",
+ 
+  const {formState,onInputChange,onResetForm, username,email,pass} = useForm({
+
+    username: "",
+    email: "",
+    pass: "",
+
   });
 
-  const { username, email, pass } = formState;
-
-  const onInputChange = ({ target }) => {
-    const { name, value } = target;
-    setformState({
-      ...formState,
-      [name]: value,
-    });
-  }
-
-  useEffect(()=>{
-    //console.log('useEffect Called!');
-  },
-  [] // un arreglo vacio permite que el callback del useEfect se ejecute una vez cuando el componente se rederiza 
-  );
-
-  useEffect(
-    () => {
-    //  console.log("formState Change!");
-    },
-    [formState] // se dispara cuando el formState sufre un cambio
-  );
-
-  useEffect(
-    () => {
-      //console.log("email change!");
-    },
-    [email] // el useEffect se dispara cuando el email cambia
-  );
-
+  //const {username,email,pass} = formState;
 
 
   return (
@@ -72,6 +46,8 @@ export const FormWithCustomHook = () => {
           onChange={onInputChange}
           value={pass}
         />
+
+        <button className="btn btn-warning mt-2" onClick={onResetForm}>Borrar</button>
 
       </div>
     </>
