@@ -1,4 +1,5 @@
 import React from 'react'
+import { TodoItem } from './TodoItem'
 
 export const TodoList = ({todos}) => {
   return (
@@ -9,11 +10,7 @@ export const TodoList = ({todos}) => {
 {
    todos.map(todo => (
 
-       <li key={todo.id} className="list-group-item d-flex justify-content-between">
-       <span className="align-self-center"> {todo.description}</span>
-       <button className="btn btn-danger"> Borrar</button>
-   </li>
-
+       <TodoItem item={todo}/>
    ))
 }
 
