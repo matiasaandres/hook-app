@@ -1,6 +1,7 @@
 
-import React from 'react'
+import React, { useEffect, useReducer} from 'react'
 import { todoReducer } from "../08-useReducer/TodoReducer";
+import { initialState } from "../08-useReducer/infoTodo";
 
 const initialTodo = initialState;
 const init = () =>{
