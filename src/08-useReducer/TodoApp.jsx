@@ -1,6 +1,4 @@
 import React, { useEffect, useReducer } from "react";
-import { todoReducer } from "./TodoReducer";
-import { initialState } from "./infoTodo";
 import { TodoList } from "./TodoList";
 import { TodoAdd } from "./TodoAdd";
 import { useTodo } from "../hooks/useTodo";
