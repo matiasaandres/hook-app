@@ -7,12 +7,12 @@ import { useTodo } from "../hooks/useTodo";
 // init permite la carga del local storage de los todos 
 export const TodoApp = () => {
 
-  const {todos,handleDeleteTodo,handleNewTodo,handleToggleTodo} = useTodo();
+  const {todos,handleDeleteTodo,handleNewTodo,handleToggleTodo,pendingTodoCount, todoCount} = useTodo();
 
   return (
     <>
       <h1>
-        TodoApp 10, <small>pendientes: 2</small>
+        TodoApp: {todoCount}, <small>pendientes: {pendingTodoCount}</small>
       </h1>
       <hr />
 
