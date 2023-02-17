@@ -3,7 +3,6 @@ import { useState } from "react";
 import { Message } from "./Message";
 
 export const SimpleForm = () => {
-  
   const [formState, setformState] = useState({
     username: "strider2",
     email: "matias@google.com",
@@ -18,17 +17,18 @@ export const SimpleForm = () => {
       ...formState,
       [name]: value,
     });
-  }
+  };
 
-  useEffect(()=>{
-    //console.log('useEffect Called!');
-  },
-  [] // un arreglo vacio permite que el callback del useEfect se ejecute una vez cuando el componente se rederiza 
+  useEffect(
+    () => {
+      //console.log('useEffect Called!');
+    },
+    [] // un arreglo vacio permite que el callback del useEfect se ejecute una vez cuando el componente se rederiza
   );
 
   useEffect(
     () => {
-    //  console.log("formState Change!");
+      //  console.log("formState Change!");
     },
     [formState] // se dispara cuando el formState sufre un cambio
   );
@@ -39,8 +39,6 @@ export const SimpleForm = () => {
     },
     [email] // el useEffect se dispara cuando el email cambia
   );
-
-
 
   return (
     <>
@@ -75,9 +73,7 @@ export const SimpleForm = () => {
           value={pass}
         />
 
-        {
-          (username=== 'strider2') && <Message/>
-        }
+        {username === "strider2" && <Message />}
       </div>
     </>
   );
